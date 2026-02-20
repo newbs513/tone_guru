@@ -1,0 +1,6 @@
+modelKey,paramKey,name,dataType,unit,minValue,maxValue,step,enumOptions,defaultValue,sourceType,sourceUrl,confidence,lastVerifiedAt
+deluxe_reverb_65,gain,Gain,NUMBER,,0,10,0.1,,4,MANUAL,https://example.com/tmp-manual,0.99,2026-01-01T00:00:00Z
+deluxe_reverb_65,bass,Bass,NUMBER,,0,10,0.1,,5,MANUAL,https://example.com/tmp-manual,0.99,2026-01-01T00:00:00Z
+deluxe_reverb_65,bright_switch,Bright,TOGGLE,,,,,,false,MANUAL,https://example.com/tmp-manual,0.99,2026-01-01T00:00:00Z
+brit_jtm45,presence,Presence,NUMBER,,0,10,0.1,,5,MANUAL,https://example.com/tmp-manual,0.99,2026-01-01T00:00:00Z
+fender_2x12_ir,mic_type,Mic Type,ENUM,,,,,"[\"SM57\",\"R121\",\"U67\"]","SM57",RELEASE_NOTE,https://example.com/tmp-release-notes,0.95,2026-01-01T00:00:00Z

@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TmpModelCategory {
+  AMP
+  CAB
+  DRIVE
+  DYNAMICS
+  MODULATION
+  DELAY
+  REVERB
+  FILTER
+  PITCH
+  UTILITY
+}
+
+enum TmpParameterDataType {
+  NUMBER
+  ENUM
+  TOGGLE
+}
+
+enum SourceType {
+  MANUAL
+  RELEASE_NOTE
+  VERIFIED_USER
+}
+
+model TmpFirmwareVersion {
+  id            String               @id @default(cuid())
+  version       String               @unique
+  releaseDate   DateTime?
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+  availabilities TmpModelAvailability[]
+}
+
+model TmpModel {
+  id            String               @id @default(cuid())
+  modelKey      String               @unique
+  displayName   String
+  category      TmpModelCategory
+  description   String?
+  sourceType    SourceType?
+  sourceUrl     String?
+  confidence    Float?
+  lastVerifiedAt DateTime?
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  parameters    TmpModelParameter[]
+  availabilities TmpModelAvailability[]
+}
+
+model TmpModelParameter {
+  id             String               @id @default(cuid())
+  modelId         String
+  model           TmpModel             @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  paramKey        String
+  name            String
+  dataType        TmpParameterDataType
+  unit            String?
+  minValue        Float?
+  maxValue        Float?
+  step            Float?
+  enumOptions     Json?
+  defaultValue    Json?
+  sourceType      SourceType?
+  sourceUrl       String?
+  confidence      Float?
+  lastVerifiedAt  DateTime?
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+
+  availabilities  TmpModelAvailability[]
+
+  @@unique([modelId, paramKey])
+  @@index([modelId])
+}
+
+model TmpModelAvailability {
+  id                String             @id @default(cuid())
+  firmwareVersionId String
+  modelId           String
+  parameterId       String?
+  isAvailable       Boolean            @default(true)
+  notes             String?
+
+  firmwareVersion   TmpFirmwareVersion @relation(fields: [firmwareVersionId], references: [id], onDelete: Cascade)
+  model             TmpModel           @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  parameter         TmpModelParameter? @relation(fields: [parameterId], references: [id], onDelete: Cascade)
+
+  @@unique([firmwareVersionId, modelId, parameterId])
+  @@index([firmwareVersionId])
+  @@index([modelId])
+}
