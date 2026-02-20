@@ -1,0 +1,7 @@
+firmwareVersion,modelKey,paramKey,isAvailable,notes
+1.0.0,deluxe_reverb_65,,true,Base firmware
+1.0.0,deluxe_reverb_65,gain,true,Base firmware
+1.0.0,deluxe_reverb_65,bass,true,Base firmware
+1.1.0,brit_jtm45,,true,Added in v1.1.0
+1.1.0,brit_jtm45,presence,true,Added in v1.1.0
+1.1.0,fender_2x12_ir,mic_type,true,Added in v1.1.0

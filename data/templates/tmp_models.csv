@@ -1,0 +1,4 @@
+modelKey,displayName,category,description,sourceType,sourceUrl,confidence,lastVerifiedAt
+deluxe_reverb_65,65 Deluxe Reverb,AMP,Classic Fender clean combo amp,MANUAL,https://example.com/tmp-manual,0.99,2026-01-01T00:00:00Z
+brit_jtm45,Brit JTM45,AMP,British vintage crunch amp,MANUAL,https://example.com/tmp-manual,0.99,2026-01-01T00:00:00Z
+fender_2x12_ir,Fender 2x12 IR,CAB,Cabinet simulation,RELEASE_NOTE,https://example.com/tmp-release-notes,0.95,2026-01-01T00:00:00Z
